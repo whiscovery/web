@@ -12,6 +12,7 @@
         <v-card>
           <v-card-title>
             Footer 수정
+            <v-spacer />
             <v-btn icon @click="save"><v-icon>mdi-content-save</v-icon></v-btn>
             <v-btn icon @click="dialog=false"><v-icon>mdi-close</v-icon></v-btn>
           </v-card-title>
