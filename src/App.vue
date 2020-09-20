@@ -6,7 +6,7 @@
       dark
     >
      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-     <site-title :title="title"></site-title>
+     <site-title :title="site.title"></site-title>
 
      <v-spacer></v-spacer>
      <v-btn icon @click="save"><v-icon>mdi-check</v-icon></v-btn>
@@ -22,7 +22,7 @@
       <router-view></router-view>
     </v-main>
 
-   <site-footer :footer="footer"></site-footer>
+   <site-footer :footer="site.footer"></site-footer>
   </v-app>
 </template>
 
@@ -37,9 +37,11 @@ export default {
   data () {
     return {
       drawer: false,
-      title: 'Whiscovery',
-      item: [],
-      footer: 'made by Whiscovery'
+      site: {
+        title: 'Whiscovery',
+        item: [],
+        footer: 'made by Whiscovery'
+      }
     }
   },
   mounted () {
