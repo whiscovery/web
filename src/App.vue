@@ -15,7 +15,7 @@
 
     </v-app-bar>
      <v-navigation-drawer app v-model="drawer">
-      <site-menu></site-menu>
+      <site-menu :items="site.menu"></site-menu>
      </v-navigation-drawer>
 
     <v-main>
@@ -39,15 +39,27 @@ export default {
       drawer: false,
       site: {
         title: 'Whiscovery',
-        item: [],
+        menu: [],
         footer: 'made by Whiscovery'
       }
     }
   },
-  mounted () {
-    console.log(this.$firebase)
-  },
+  created () {
+    this.subscribe()
+
+  }
   methods: {
+    subscribe () {
+      this.$firebase.database().ref().child('site').on('value', sn => {
+        const v = sn.val()
+        if (!v) {
+          this.$firebase.database().ref().child('site').set(this.site)
+        }
+        this.site = v
+      }, (e) => {
+        console.log(e.message)
+      })
+    },
     save () {
       this.$firebase.database().ref().child('abcd').set({
         title: 'abcd',
