@@ -1,10 +1,30 @@
 <template>
   <div>
-    <v-list-item v-for="item in items" :key="item.title" :to="item.to">
-      <v-list-item-content>
-        {{ item.title}}
-      </v-list-item-content>
-    </v-list-item>
+    <v-list>
+      <v-list-group
+        v-for="(item,i) in items"
+        :key="i"
+        v-model="item.active"
+        :prepend-icon="item.icon"
+        no-action
+      >
+        <template v-slot:activator>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title"></v-list-item-title>
+          </v-list-item-content>
+        </template>
+
+        <v-list-item
+          v-for="subItem in item.subitems"
+          :key="subItem.title"
+          :to="subItem.to"
+        >
+          <v-list-item-content>
+            <v-list-item-title v-text="subItem.title"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list-group>
+    </v-list>
   </div>
 </template>
 
@@ -15,11 +35,20 @@ export default {
       items: [
         {
           title: 'home',
-          to: '/'
+          to: '/',
+          active: true,
+          icon: 'mdi-home'
         },
         {
           title: 'about',
-          to: '/about'
+          to: '/about',
+          subitems: [
+            {
+              title: 'Scotch whiskey',
+              to: '/ScotchWhiskey'
+            }
+
+          ]
         },
         {
           title: 'category',
