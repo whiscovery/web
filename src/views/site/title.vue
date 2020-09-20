@@ -6,7 +6,7 @@
          <v-card>
            <v-card-title>제목 수정</v-card-title>
            <v-card-text>
-             <v-text-field v-model="text" />
+             <v-text-field v-model="text" outlined label="제목" @keypress.enter="save" />
            </v-card-text>
          </v-card>
        </v-dialog>
@@ -26,6 +26,9 @@ export default {
   methods: {
     openDialog () {
       this.dialog = true
+    },
+    save () {
+      this.$firebase.database().ref().child('site').update({ title: this.text })
     }
   }
 }
