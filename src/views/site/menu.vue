@@ -40,19 +40,23 @@ export default {
           icon: 'mdi-home'
         },
         {
-          title: 'about',
-          to: '/about',
+          title: '분류',
+          to: '/category',
           subitems: [
             {
-              title: 'Scotch whiskey',
+              title: '스카치 위스키',
               to: '/ScotchWhiskey'
+            },
+            {
+              title: '블렌디드 위스키',
+              to: '/BlendedWhiskey'
             }
 
           ]
         },
         {
-          title: 'category',
-          to: '/category'
+          title: '스터디 입력',
+          to: '/write'
         }
 
       ]
