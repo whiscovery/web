@@ -46,8 +46,7 @@ export default {
   },
   created () {
     this.subscribe()
-
-  }
+  },
   methods: {
     subscribe () {
       this.$firebase.database().ref().child('site').on('value', sn => {
