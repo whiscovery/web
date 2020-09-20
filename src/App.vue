@@ -10,6 +10,8 @@
 
      <v-spacer></v-spacer>
      <v-btn icon @click="save"><v-icon>mdi-check</v-icon></v-btn>
+     <v-btn icon @click="read"><v-icon>mdi-book</v-icon></v-btn>
+     <v-btn icon @click="readOne"><v-icon>mdi-note</v-icon></v-btn>
 
     </v-app-bar>
      <v-navigation-drawer app v-model="drawer">
@@ -45,7 +47,20 @@ export default {
   },
   methods: {
     save () {
-      console.log('save@##')
+      this.$firebase.database().ref().child('abcd').set({
+        title: 'abcd',
+        text: 'tttt'
+      })
+    },
+    read () {
+      this.$firebase.database().ref().child('abcd').on('value', sn => {
+        console.log(sn)
+        console.log(sn.val())
+      })
+    },
+    async readOne () {
+      const sn = await this.$firebase.database().ref().child('abcd').once('value')
+      console.log(sn.val())
     }
   }
 }
