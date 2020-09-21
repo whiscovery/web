@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import SiteTitle from '@/views/site/title'
-import SiteFooter from '@/views/site/footer'
-import SiteMenu from '@/views/site/menu'
+import SiteTitle from '@/components/title'
+import SiteFooter from '@/components/footer'
+import SiteMenu from '@/components/menu'
 
 export default {
   components: { SiteTitle, SiteFooter, SiteMenu },
