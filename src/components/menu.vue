@@ -15,8 +15,8 @@
         </template>
 
         <v-list-item
-          v-for="subItem in item.subitems"
-          :key="subItem.title"
+          v-for="(subItem, j) in item.subitems"
+          :key="j"
           :to="subItem.to"
         >
           <v-list-item-content>
@@ -24,6 +24,15 @@
           </v-list-item-content>
         </v-list-item>
       </v-list-group>
+      <v-list-item>
+        <v-list-icon>
+          <v-icon>mdi-plus</v-icon>
+        </v-list-icon>
+        <v-list-item-content>
+          <v-list-item-title>추가하기</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
     </v-list>
   </div>
 </template>
